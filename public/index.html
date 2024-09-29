@@ -21,14 +21,15 @@
             console.log('Disconnected from server');
         });
 
-        socket.emit('message', {
-            user: 'Renato',
-            message: 'Hola Mundo'
+        socket.on('new-message', function(payload) {
+            console.log('Message received', payload);   
         });
 
-        socket.on('message', function(payload) {
-            console.log('Message received', payload);
+        socket.on('initial-bands', function(payload) {
+            console.clear();
+            console.table(payload);
         });
+
     </script>
 </body>
 </html>
